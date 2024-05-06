@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 import java.util.ArrayList;
 public abstract class Student
@@ -8,6 +9,7 @@ public abstract class Student
     private String _universityName, _degreeName;
     private String _occupation, _universityStudentID, _onlinePlatform;
     private int _daysInAWeek, _systemStudentId, _degreeTimeLength, _userAge;
+    private ArrayList <String> _ucasCalculatorResults = new ArrayList<>();
 
     //Encapsulation: getters used to retrieve the student data outside of this abstract class.
     public String getForename() {return _forename;}
@@ -23,6 +25,7 @@ public abstract class Student
     public int getSystemStudentId() {return _systemStudentId;}
     public int getDegreeTimeLength() {return _degreeTimeLength;}
     public int getUserAge() {return _userAge;}
+    public ArrayList <String> getUcasCalculatorResults() {return _ucasCalculatorResults;}
 
     //Encapsulation: setters used to modify the data to be stored in these private variables.
     public void setForename(String forename) {this._forename = forename;}
@@ -38,6 +41,7 @@ public abstract class Student
     public void setSystemStudentId(int systemStudentId) {this._systemStudentId = systemStudentId;}
     public void setDegreeTimeLength(int degreeTimeLength) {this._degreeTimeLength = degreeTimeLength;}
     public void setUserAge(int userAge) {this._userAge = userAge;}
+    public void setUcasCalculatorResults(ArrayList <String> ucasCalculatorResults) { this._ucasCalculatorResults = ucasCalculatorResults;}
 
     public Student() {}
     public void createStudent() {}

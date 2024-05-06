@@ -6,6 +6,8 @@ public class FullTimeStudent extends Student
 {
     String characterLengthCheckValidationMessage = "This entered field is above the given character limit, try again below\n";
     String dataTypeCheckValidationMessage =  "This is not a valid integer, try again below:\n";
+    int aLevelAmount;
+
     @Override
     public void createStudent()
     {
@@ -52,9 +54,7 @@ public class FullTimeStudent extends Student
             }
         } while(getSurname().isEmpty());
 
-        ArrayList<String> aLevelSubjectNamesList = new ArrayList<String>();
         String aLevelSubjectName;
-        int aLevelAmount;
         int minALevelAmount = 3;
         int maxALevelAmount = 5;
         String aLevelNumberRequest = "Please enter the number of A-Levels " + getForename() + " took in college (3-5):";
@@ -80,6 +80,8 @@ public class FullTimeStudent extends Student
         } while(aLevelAmount < minALevelAmount || aLevelAmount > maxALevelAmount);
 
         int subjectNumber = 1;
+        ArrayList<String> aLevelSubjectNamesList = new ArrayList<String>();
+        ArrayList<String> aLevelGradesList = new ArrayList<String>();
 
         scanner.nextLine();
         for (int i = 0; i < aLevelAmount; i++)
@@ -102,7 +104,6 @@ public class FullTimeStudent extends Student
         String storeALevels = aLevelSubjectNamesList.toString();
         setALevelSubjectArray(storeALevels);
 
-        ArrayList<String> aLevelGradesList = new ArrayList<String>();
         String gradeEntered = "";
 
         int numberGrade = 0;
@@ -117,6 +118,7 @@ public class FullTimeStudent extends Student
             aLevelGradesList.add(gradeEntered);
            numberGrade++;
         }
+        setUcasCalculatorResults(aLevelGradesList);
         String storeGrades = aLevelGradesList.toString();
         setALevelGrades(storeGrades);
 

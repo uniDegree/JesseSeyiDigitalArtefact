@@ -1,11 +1,10 @@
-import java.util.InputMismatchException;
 import java.util.Scanner;
 public class ProcessManager
 {
+    FullTimeStudent fullTimeStudent = new FullTimeStudent();
     Student storeObjectType = null;
     public void manageProcess()
     {
-        FullTimeStudent fullTimeStudent = new FullTimeStudent();
         Scanner scanner = new Scanner(System.in);
         String userProceed = "";
 
@@ -52,7 +51,62 @@ public class ProcessManager
                         break;
                 }
                 userProceed = continuationOrExit(continuationRequest, scanner);
+
+                int userOption = 0;
+                String menuProceed = "";
+                String optionPrompt = "Please enter the option you would like to use below: (1-4)";
+                while (!menuProceed.equals("N"))
+                {
+                    do
+                    {
+                        System.out.println("In this programme you have 4 choices:");
+                        System.out.println("Option 1 - See "+ storeObjectType.getForename() + "'s age when their degree has finished");
+                        System.out.println("Option 2 - Calculate " + storeObjectType.getForename() + "'s UCAS score");
+                        System.out.println("Option 3 - See how many years it will take for " + storeObjectType.getForename() + " to reach retirement");
+
+                        try
+                        {
+                            userOption = fullTimeStudent.getIntegerFromUser(optionPrompt, scanner);
+                            scanner.nextLine();
+
+                            if (userOption > 3)
+                            {
+                                throw new InvalidNumberException("This is invalid as it is above 3", userOption);
+                            }
+                            else if (userOption < 1)
+                            {
+                                throw new InvalidNumberException("This is invalid a is below 1", userOption);
+                            }
+                        }
+                        catch(InvalidNumberException e)
+                        {
+                            System.err.println(e.getMessage());
+                        }
+                    } while (userOption < 1 || userOption > 3);
+
+                    switch (userOption)
+                    {
+                        case 1:
+                            AgeAfterDegree ageAfterDegree = new AgeAfterDegree();
+                            ageAfterDegree.userAgeAfterDegree(storeObjectType.getUserAge(), storeObjectType.getDegreeTimeLength(), storeObjectType.getForename(), storeObjectType.getDegreeName(), storeObjectType.getUniversityName());
+                            break;
+                        case 2:
+                            UcasCalculator ucasCalculator = new UcasCalculator();
+                            ucasCalculator.calculateUcasPoints(storeObjectType);
+                            break;
+                        case 3:
+                            YearsTillRetirement yearsTillRetirement = new YearsTillRetirement();
+                            yearsTillRetirement.retirementCountdown(storeObjectType);
+                            break;
+                        default:
+                            break;
+                    }
+                    String menuContinuationRequest = "Would you like to see further information on " + storeObjectType.getForename() + " or would you like to leave this menu? (Y/N)";
+                    menuProceed = continuationOrExit(menuContinuationRequest, scanner);
+                }
+                userProceed = continuationOrExit(continuationRequest, scanner);
             }
+
             if (readOrWriteChoice.equals("V"))
             {
                 String readFileRequest = "Please enter the ID of the student you wish to access data for:";
@@ -62,8 +116,7 @@ public class ProcessManager
                 {
                     try
                     {
-                        FullTimeStudent fullTimeStudent1 = new FullTimeStudent();
-                        studentId = fullTimeStudent1.getIntegerFromUser(readFileRequest, scanner);
+                        studentId = fullTimeStudent.getIntegerFromUser(readFileRequest, scanner);
                         scanner.nextLine();
 
                         if(studentId < 0)
