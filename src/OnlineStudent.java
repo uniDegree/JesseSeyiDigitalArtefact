@@ -31,5 +31,7 @@ public class OnlineStudent extends FullTimeStudent
 
                 break;
         }
+        AppendOnlineStudentFile.writeFullTimeStudentToFile(getSystemStudentId(), getForename(), getSurname(), getALevelSubjectArray(), getALevelGrades(), getUniversityName(), getDegreeName(), getOccupation(), getUniversityStudentID(), getDegreeTimeLength(), getUserAge());
+        AppendOnlineStudentFile.appendOnlineTimeStudentToFile(getSystemStudentId(), getOnlinePlatform());
     }
 }

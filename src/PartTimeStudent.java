@@ -44,6 +44,8 @@ public class PartTimeStudent extends FullTimeStudent
                 System.out.println("Part time student successfully registered. " + getForename() + " has been assigned student number: " + getSystemStudentId());
                 break;
         }
+        AppendPartTimeStudentFile.writeFullTimeStudentToFile(getSystemStudentId(), getForename(), getSurname(), getALevelSubjectArray(), getALevelGrades(), getUniversityName(), getDegreeName(), getOccupation(), getUniversityStudentID(), getDegreeTimeLength(), getUserAge());
+        AppendPartTimeStudentFile.appendPartTimeStudentToFile(getSystemStudentId(), getDaysInAWeek());
     }
 
 }

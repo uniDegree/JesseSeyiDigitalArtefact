@@ -252,6 +252,7 @@ public class FullTimeStudent extends Student
                 System.out.println("Full time student successfully registered. " + getForename() + " has been assigned student number: " + getSystemStudentId());
                 break;
         }
+        WriteFullTimeStudentFile.writeFullTimeStudentToFile(getSystemStudentId(), getForename(), getSurname(), getALevelSubjectArray(), getALevelGrades(), getUniversityName(), getDegreeName(), getOccupation(), getUniversityStudentID(), getDegreeTimeLength(), getUserAge());
     }
 
     public int getIntegerFromUser(String prompt, Scanner scanner)
