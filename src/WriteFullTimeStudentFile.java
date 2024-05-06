@@ -2,11 +2,10 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class WriteFullTimeStudentFile
 {
-    public static void writeFullTimeStudentToFile(int systemStudentId, String forename, String surname, ArrayList <String> subjects, ArrayList <String> grades, String universityName, String degreeName, String occupation, String universityStudentId, int degreeTimeLength, int userAge)
+    public static void writeFullTimeStudentToFile(int systemStudentId, String forename, String surname, String subjects, String grades, String universityName, String degreeName, String occupation, String universityStudentId, int degreeTimeLength, int userAge)
     {
         String filePath = systemStudentId + ".txt";
         File file = new File(Directories.DIRECTORY_STUDENT_ACCOUNTS, filePath);

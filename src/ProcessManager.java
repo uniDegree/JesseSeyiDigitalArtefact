@@ -1,8 +1,8 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 public class ProcessManager
 {
     Student storeObjectType = null;
-
     public void manageProcess()
     {
         FullTimeStudent fullTimeStudent = new FullTimeStudent();
@@ -38,6 +38,57 @@ public class ProcessManager
                     storeObjectType.createStudent();
                     storeObjectType.studentOccupation(studentType);
                     break;
+            }
+        }
+        else if (choice.equals("V"))
+        {
+
+            String readFileRequest = "Please enter the ID of the student you wish to access data for:";
+            int studentId = -1;
+
+            do
+            {
+                try
+                {
+                    FullTimeStudent fullTimeStudent1 = new FullTimeStudent();
+                    studentId = fullTimeStudent1.getIntegerFromUser(readFileRequest, scanner);
+                    scanner.nextLine();
+
+                    if(studentId < 0)
+                    {
+                        throw new InvalidNumberException("This is invalid as the student ID entered was less than 0", studentId);
+                    }
+
+                    else if(studentId > 1_000_000)
+                    {
+                        throw new InvalidNumberException("This is invalid as the student ID entered ID was more than 1,000,000", studentId);
+
+                    }
+                }
+                catch(InvalidNumberException e)
+                {
+                    System.err.println(e.getMessage());
+                }
+            } while(studentId < 0 || studentId > 1_000_000);
+
+            Student foundStudent = ReadFullTimeStudentFile.AccessStudentData(studentId);
+
+            String occupationCheck = foundStudent.printOccupation();
+            if(occupationCheck.equals("part-time student"))
+            {
+                Student foundPartTime = ReadPartTimeStudentFile.AccessStudentData(studentId);
+                foundPartTime.printGeneralDetails();
+                foundPartTime.printPartTimeStudentDetail();
+            }
+            else if (occupationCheck.equals("online student"))
+            {
+                Student foundOnline = ReadOnlineStudentFile.AccessStudentData(studentId);
+                foundOnline.printGeneralDetails();
+                foundOnline.printOnlineStudentDetail();
+            }
+            else
+            {
+                foundStudent.printGeneralDetails();
             }
         }
     }

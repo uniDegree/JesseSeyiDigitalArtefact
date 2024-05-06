@@ -26,12 +26,12 @@ public class OnlineStudent extends FullTimeStudent
         switch (studentType)
         {
             case 3:
-                setOccupation("online student");
+                setOccupation("Online student");
                 System.out.println("Online student successfully registered. " + getForename() + " has been assigned student number: " + getSystemStudentId());
 
                 break;
         }
-        AppendOnlineStudentFile.writeFullTimeStudentToFile(getSystemStudentId(), getForename(), getSurname(), getALevelSubjectArray(), getALevelGrades(), getUniversityName(), getDegreeName(), getOccupation(), getUniversityStudentID(), getDegreeTimeLength(), getUserAge());
+        AppendOnlineStudentFile.writeFullTimeStudentToFile(getSystemStudentId(), getForename(), getSurname(), getALevelSubjects(), getALevelGrades(), getUniversityName(), getDegreeName(), getOccupation(), getUniversityStudentID(), getDegreeTimeLength(), getUserAge());
         AppendOnlineStudentFile.appendOnlineTimeStudentToFile(getSystemStudentId(), getOnlinePlatform());
     }
 }

@@ -40,11 +40,11 @@ public class PartTimeStudent extends FullTimeStudent
         switch (studentType)
         {
             case 2:
-                setOccupation("part-time student");
-                System.out.println("Part time student successfully registered. " + getForename() + " has been assigned student number: " + getSystemStudentId());
+                setOccupation("Part-time student");
+                System.out.println("Part-time student successfully registered. " + getForename() + " has been assigned student number: " + getSystemStudentId());
                 break;
         }
-        AppendPartTimeStudentFile.writeFullTimeStudentToFile(getSystemStudentId(), getForename(), getSurname(), getALevelSubjectArray(), getALevelGrades(), getUniversityName(), getDegreeName(), getOccupation(), getUniversityStudentID(), getDegreeTimeLength(), getUserAge());
+        AppendPartTimeStudentFile.writeFullTimeStudentToFile(getSystemStudentId(), getForename(), getSurname(), getALevelSubjects(), getALevelGrades(), getUniversityName(), getDegreeName(), getOccupation(), getUniversityStudentID(), getDegreeTimeLength(), getUserAge());
         AppendPartTimeStudentFile.appendPartTimeStudentToFile(getSystemStudentId(), getDaysInAWeek());
     }
 

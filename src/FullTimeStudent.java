@@ -99,25 +99,26 @@ public class FullTimeStudent extends Student
             aLevelSubjectNamesList.add(aLevelSubjectName);
             subjectNumber++;
         }//End of for loop.
-        setALevelSubjectArray(aLevelSubjectNamesList);
+        String storeALevels = aLevelSubjectNamesList.toString();
+        setALevelSubjectArray(storeALevels);
 
-        ArrayList<String> aLevelGrades = new ArrayList<String>();
+        ArrayList<String> aLevelGradesList = new ArrayList<String>();
         String gradeEntered = "";
 
         int numberGrade = 0;
-        ArrayList <String> subjectsTaken = getALevelSubjectArray();
         for (int i = 0; i < aLevelAmount; i ++)
         {
             do
             {
-                String aLevelGradeRequest = "Please enter the grade " + getForename() + " scored for " + subjectsTaken.get(numberGrade) + " (A*, A, B, C, D, E, NC)";
+                String aLevelGradeRequest = "Please enter the grade " + getForename() + " scored for " + aLevelSubjectNamesList.get(numberGrade) + " (A*, A, B, C, D, E, NC)";
                 System.out.println(aLevelGradeRequest);
                 gradeEntered = scanner.nextLine().toUpperCase();
             } while(!gradeEntered.equals("A*") && !gradeEntered.equals("A") && !gradeEntered.equals("B") && !gradeEntered.equals("C") && !gradeEntered.equals("D") && !gradeEntered.equals("E") && !gradeEntered.equals("NC"));
-           aLevelGrades.add(gradeEntered);
+            aLevelGradesList.add(gradeEntered);
            numberGrade++;
         }
-        setALevelGradesArray(aLevelGrades);
+        String storeGrades = aLevelGradesList.toString();
+        setALevelGrades(storeGrades);
 
         //This do while loop keeps repeating until the university name entered is not left null, and it is not above 100 characters.
         //Once it has met these criteria, it is stored in the private university name variable using the setter I made in the Student class.
@@ -248,11 +249,11 @@ public class FullTimeStudent extends Student
         switch(studentType)
         {
             case 1:
-                setOccupation("full-time student");
-                System.out.println("Full time student successfully registered. " + getForename() + " has been assigned student number: " + getSystemStudentId());
+                setOccupation("Full-time student");
+                System.out.println("Full-time student successfully registered. " + getForename() + " has been assigned student number: " + getSystemStudentId());
                 break;
         }
-        WriteFullTimeStudentFile.writeFullTimeStudentToFile(getSystemStudentId(), getForename(), getSurname(), getALevelSubjectArray(), getALevelGrades(), getUniversityName(), getDegreeName(), getOccupation(), getUniversityStudentID(), getDegreeTimeLength(), getUserAge());
+        WriteFullTimeStudentFile.writeFullTimeStudentToFile(getSystemStudentId(), getForename(), getSurname(), getALevelSubjects(), getALevelGrades(), getUniversityName(), getDegreeName(), getOccupation(), getUniversityStudentID(), getDegreeTimeLength(), getUserAge());
     }
 
     public int getIntegerFromUser(String prompt, Scanner scanner)
