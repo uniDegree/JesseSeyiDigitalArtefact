@@ -1,6 +1,6 @@
-import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class FullTimeStudent extends Student
 {
@@ -13,18 +13,10 @@ public class FullTimeStudent extends Student
         //These are stored in variables to avoid me printing the same statements repeatedly as this
         //is prone to mistakes being made.
         String forenameEntryRequest = "Please enter the first name (50 characters max):";
-        String surnameEntryRequest = "Please enter the surname (50 characters max):";
-        String universityNameEntryRequest = "Please enter the name of their university (100 characters max):";
-        String studentIdEntryRequest = "Please enter their student ID (10 characters max):";
-        String degreeNameEntryRequest = "Please enter the name of their degree (100 characters max):";
-        String degreeTimeLengthEntryRequest = "Please enter the time length of their degree in years (1-10):";
-        String userAgeEntryRequest = "Please enter their age:";
-
-
 
         //This do while loop keeps repeating until the forename entered is not left null, and it is not above 50 characters.
         //Once it has met these criteria, it is stored in the private forename variable using the setter I made in the Student class.
-        int forenameAndSurnameLength = 50;
+        int forenameAndSurnameAndSubjectNameLength = 50;
         int universityAndDegreeNamesLength = 100;
         int studentIdLength = 10;
 
@@ -33,7 +25,7 @@ public class FullTimeStudent extends Student
             System.out.println(forenameEntryRequest);
             setForename(scanner.nextLine());
 
-            while(getForename().length() >forenameAndSurnameLength)
+            while(getForename().length() >forenameAndSurnameAndSubjectNameLength)
             {
                 System.out.println(characterLengthCheckValidationMessage);
                 System.out.println(forenameEntryRequest);
@@ -44,12 +36,14 @@ public class FullTimeStudent extends Student
 
         //This do while loop keeps repeating until the surname entered is not left null, and it is not above 50 characters.
         //Once it has met these criteria, it is stored in the private surname variable using the setter I made in the Student class.
+
+        String surnameEntryRequest = "Please enter " + getForename() +"'s surname (50 characters max):";
         do
         {
             System.out.println(surnameEntryRequest);
             setSurname(scanner.nextLine());
 
-            while(getSurname().length() >forenameAndSurnameLength)
+            while(getSurname().length() >forenameAndSurnameAndSubjectNameLength)
             {
                 System.out.println(characterLengthCheckValidationMessage);
                 System.out.println(surnameEntryRequest);
@@ -58,8 +52,77 @@ public class FullTimeStudent extends Student
             }
         } while(getSurname().isEmpty());
 
+        ArrayList<String> aLevelSubjectNamesList = new ArrayList<String>();
+        String aLevelSubjectName;
+        int aLevelAmount;
+        int minALevelAmount = 3;
+        int maxALevelAmount = 5;
+        String aLevelNumberRequest = "Please enter the number of A-Levels " + getForename() + " took in college (3-5):";
+
+        do
+        {
+            aLevelAmount = getIntegerFromUser(aLevelNumberRequest, scanner);
+            try
+            {
+                if(aLevelAmount < minALevelAmount)
+                {
+                    throw new InvalidNumberException("This is invalid as it cannot be below 3", aLevelAmount);
+                }
+                else if(aLevelAmount > maxALevelAmount)
+                {
+                    throw new InvalidNumberException("This is invalid as it cannot be above 5", aLevelAmount);
+                }
+            }
+            catch(InvalidNumberException e)
+            {
+                System.err.println(e.getMessage());
+            }
+        } while(aLevelAmount < minALevelAmount || aLevelAmount > maxALevelAmount);
+
+        int subjectNumber = 1;
+
+        scanner.nextLine();
+        for (int i = 0; i < aLevelAmount; i++)
+        {
+            String subjectNameRequest = "Enter the name of subject " + subjectNumber+ ": (50 characters):";
+            do
+            {
+                System.out.println(subjectNameRequest);
+                aLevelSubjectName = scanner.nextLine();
+                while(aLevelSubjectName.length() > forenameAndSurnameAndSubjectNameLength)
+                {
+                    System.out.println(characterLengthCheckValidationMessage);
+                    System.out.println(subjectNameRequest);
+                    aLevelSubjectName = scanner.nextLine();
+                }
+            } while(aLevelSubjectName.isEmpty());
+            aLevelSubjectNamesList.add(aLevelSubjectName);
+            subjectNumber++;
+        }//End of for loop.
+        setALevelSubjectArray(aLevelSubjectNamesList);
+
+        ArrayList<String> aLevelGrades = new ArrayList<String>();
+        String gradeEntered = "";
+
+        int numberGrade = 0;
+        ArrayList <String> subjectsTaken = getALevelSubjectArray();
+        for (int i = 0; i < aLevelAmount; i ++)
+        {
+            do
+            {
+                String aLevelGradeRequest = "Please enter the grade " + getForename() + " scored for " + subjectsTaken.get(numberGrade) + " (A*, A, B, C, D, E, NC)";
+                System.out.println(aLevelGradeRequest);
+                gradeEntered = scanner.nextLine().toUpperCase();
+            } while(!gradeEntered.equals("A*") && !gradeEntered.equals("A") && !gradeEntered.equals("B") && !gradeEntered.equals("C") && !gradeEntered.equals("D") && !gradeEntered.equals("E") && !gradeEntered.equals("NC"));
+           aLevelGrades.add(gradeEntered);
+           numberGrade++;
+        }
+        setALevelGradesArray(aLevelGrades);
+
         //This do while loop keeps repeating until the university name entered is not left null, and it is not above 100 characters.
         //Once it has met these criteria, it is stored in the private university name variable using the setter I made in the Student class.
+
+        String universityNameEntryRequest = "Please enter the name of " + getForename() + "'s university (100 characters max):";
         do
         {
             System.out.println(universityNameEntryRequest);
@@ -76,6 +139,8 @@ public class FullTimeStudent extends Student
 
         //This do while loop keeps repeating until the degree name entered is not left null, and it is not above 100 characters.
         //Once it has met these criteria, it is stored in the private degree name variable using the setter I made in the Student class.
+
+        String degreeNameEntryRequest = "Please enter the name of " + getForename() + "'s degree (100 characters max):";
         do
         {
             System.out.println(degreeNameEntryRequest);
@@ -92,6 +157,8 @@ public class FullTimeStudent extends Student
 
         //This do while loop keeps repeating until the student ID entered is not left null, and it is not above 10 characters.
         //Once it has met these criteria, it is stored in the private student ID variable using the setter I made in the Student class.
+
+        String studentIdEntryRequest = "Please enter " + getForename() + "'s student ID (10 characters max):";
         do
         {
             System.out.println(studentIdEntryRequest);
@@ -113,6 +180,8 @@ public class FullTimeStudent extends Student
         int enteredDegreeTimeLength = 0;
         int minTimeLength = 1;
         int maxTimeLength = 10;
+
+        String degreeTimeLengthEntryRequest = "Please enter how long it will take " + getForename() + " to complete studying " + getDegreeName()  + " in years (1-10):";
         do
         {
             enteredDegreeTimeLength = getIntegerFromUser(degreeTimeLengthEntryRequest, scanner);
@@ -122,11 +191,11 @@ public class FullTimeStudent extends Student
             {
                 if(enteredDegreeTimeLength <= minTimeLength)
                 {
-                    throw new InvalidNumberException("Year number entered was less that 1", enteredDegreeTimeLength);
+                    throw new InvalidNumberException("This is invalid as the year number entered is less that 1", enteredDegreeTimeLength);
                 }
                 else if(enteredDegreeTimeLength > maxTimeLength)
                 {
-                    throw new InvalidNumberException("Research shows that a degree does not take any longer than 10 years", enteredDegreeTimeLength);
+                    throw new InvalidNumberException("This is invalid as research shows that a degree does not take any longer than 10 years", enteredDegreeTimeLength);
                 }
             }
             catch(InvalidNumberException e)
@@ -144,6 +213,7 @@ public class FullTimeStudent extends Student
         int enteredAge = 0;
         int minAge = 18;
         int maxAge = 129;
+        String userAgeEntryRequest = "Enter " + getForename() + "'s age:";
         do
         {
             enteredAge = getIntegerFromUser(userAgeEntryRequest, scanner);
@@ -153,11 +223,11 @@ public class FullTimeStudent extends Student
             {
                 if(enteredAge < minAge)
                 {
-                    throw new InvalidNumberException("The entered age has to be above 18", enteredAge);
+                    throw new InvalidNumberException("This is invalid as the entered age is not above 18", enteredAge);
                 }
                 else if(enteredAge > maxAge)
                 {
-                    throw new InvalidNumberException("The age entered is invalid", enteredAge);
+                    throw new InvalidNumberException("This is invalid as the entered age is too old", enteredAge);
                 }
             }
             catch(InvalidNumberException e)
@@ -167,8 +237,9 @@ public class FullTimeStudent extends Student
         } while(enteredAge < minAge || enteredAge > maxAge);
 
         //Sets an ID for a student using a randomly generated number.
+        int maxRandomValue = 1000000;
         Random ran = new Random();
-        setSystemStudentId(ran.nextInt(1000000));
+        setSystemStudentId(ran.nextInt(maxRandomValue));
 
     }
     @Override

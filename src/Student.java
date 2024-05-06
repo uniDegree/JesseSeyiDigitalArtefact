@@ -1,8 +1,11 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 public abstract class Student
 {
     //Private variables used to store the student data.
     private String _forename, _surname;
+    private ArrayList <String> _aLevelSubjectArray = new ArrayList<>();
+    private ArrayList <String> _aLevelGradesArray = new ArrayList<>();
     private String _universityName, _degreeName;
     private String _occupation, _universityStudentID, _onlinePlatform;
     private int _daysInAWeek, _systemStudentId, _degreeTimeLength, _userAge;
@@ -10,6 +13,8 @@ public abstract class Student
     //Encapsulation: getters used to retrieve the student data outside of this abstract class.
     public String getForename() {return _forename;}
     public String getSurname() {return _surname;}
+    public ArrayList <String> getALevelSubjectArray () {return _aLevelSubjectArray;}
+    public ArrayList <String> getALevelGrades () {return _aLevelGradesArray;}
     public String getUniversityName() {return _universityName;}
     public String getDegreeName() {return _degreeName;}
     public String getOccupation() {return _occupation;}
@@ -23,6 +28,8 @@ public abstract class Student
     //Encapsulation: setters used to modify the data to be stored in these private variables.
     public void setForename(String forename) {this._forename = forename;}
     public void setSurname(String surname) {this._surname = surname;}
+    public void setALevelSubjectArray(ArrayList <String> aLevelSubjectArray) {this._aLevelSubjectArray = aLevelSubjectArray;}
+    public void setALevelGradesArray(ArrayList <String> aLevelGradesArray) {this._aLevelGradesArray= aLevelGradesArray;}
     public void setUniversityName(String universityName) {this._universityName = universityName;}
     public void setDegreeName(String degreeName) {this._degreeName = degreeName;}
     public void setOccupation(String occupation) {this._occupation = occupation;}

@@ -11,7 +11,7 @@ public class ProcessManager
         String choice = scanner.nextLine().toUpperCase();
         if (choice.equals("S"))
         {
-            String studentTypePrompt = "\nWhich type of student are you entering?\n1. Full time student | 2. Part time student | 3. Online student";
+            String studentTypePrompt = "Which type of student are you entering?\n1. Full time student | 2. Part time student | 3. Online student";
 
             int studentType = fullTimeStudent.getIntegerFromUser(studentTypePrompt, scanner);
             scanner.nextLine();
