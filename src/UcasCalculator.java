@@ -23,7 +23,8 @@ public class UcasCalculator
 
     public int pointConversion (String result)
     {
-        switch (result) {
+        switch (result)
+        {
             case "A*":
                 return 56;
             case "A":
@@ -36,6 +37,8 @@ public class UcasCalculator
                 return 24;
             case "E":
                 return 16;
+            case "NC":
+                return 0;
             default:
                 return 0;
         }//End of switch statement.
