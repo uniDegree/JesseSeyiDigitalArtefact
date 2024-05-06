@@ -1,3 +1,7 @@
+package StudentFurtherInformationClasses;
+
+import StudentClasses.Student;
+
 public class YearsTillRetirement
 {
     int nationalRetirementAge = 66;

@@ -1,3 +1,6 @@
+package MainClass;
+import ProcessManagerClass.ProcessManager;
+
 public class Main
 {
     public static void main(String[] args)

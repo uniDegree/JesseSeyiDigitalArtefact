@@ -1,3 +1,7 @@
+package StudentClasses;
+
+import WriteFileClasses.AppendOnlineStudentFile;
+
 public class OnlineStudent extends FullTimeStudent
 {
 

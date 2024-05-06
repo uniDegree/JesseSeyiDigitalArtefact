@@ -1,3 +1,5 @@
+package StudentFurtherInformationClasses;
+
 public class AgeAfterDegree
 {
     public void userAgeAfterDegree(int age, int timeLength, String forename, String degreeName, String universityName)

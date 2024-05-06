@@ -1,3 +1,5 @@
+package StudentClasses;
+
 import java.util.Arrays;
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -74,7 +76,7 @@ public abstract class Student
 
     public void printGeneralDetails()
     {
-        System.out.println("\nStudent ID: " + _systemStudentId);
+        System.out.println("\nStudentClasses.Student ID: " + _systemStudentId);
         System.out.println("Full name: " + _forename + " " + _surname);
         System.out.println("A level subjects: " + _aLevelSubjects);
         System.out.println("A level results (in the same order as subjects taken): " + _aLevelGrades);

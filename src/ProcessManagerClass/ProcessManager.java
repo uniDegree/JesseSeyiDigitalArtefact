@@ -1,3 +1,17 @@
+package ProcessManagerClass;
+
+import ReadFileClasses.ReadFullTimeStudentFile;
+import ReadFileClasses.ReadOnlineStudentFile;
+import ReadFileClasses.ReadPartTimeStudentFile;
+import StudentClasses.FullTimeStudent;
+import StudentClasses.OnlineStudent;
+import StudentClasses.PartTimeStudent;
+import StudentClasses.Student;
+import StudentFurtherInformationClasses.AgeAfterDegree;
+import StudentFurtherInformationClasses.UcasCalculator;
+import StudentFurtherInformationClasses.YearsTillRetirement;
+import CustomExceptions.InvalidNumberException;
+
 import java.util.Scanner;
 public class ProcessManager
 {
@@ -159,7 +173,7 @@ public class ProcessManager
             }
 
         }
-        System.out.println("\nThank you for using Seyi's Student Record System");
+        System.out.println("\nThank you for using Seyi's StudentClasses.Student Record System");
     }
 
     public String continuationOrExit(String request, Scanner scanner)

@@ -1,3 +1,8 @@
+package StudentClasses;
+
+import WriteFileClasses.WriteFullTimeStudentFile;
+import CustomExceptions.InvalidNumberException;
+
 import java.util.Random;
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -17,7 +22,7 @@ public class FullTimeStudent extends Student
         String forenameEntryRequest = "Please enter the first name (50 characters max):";
 
         //This do while loop keeps repeating until the forename entered is not left null, and it is not above 50 characters.
-        //Once it has met these criteria, it is stored in the private forename variable using the setter I made in the Student class.
+        //Once it has met these criteria, it is stored in the private forename variable using the setter I made in the StudentClasses.Student class.
         int forenameAndSurnameAndSubjectNameLength = 50;
         int universityAndDegreeNamesLength = 100;
         int studentIdLength = 10;
@@ -37,7 +42,7 @@ public class FullTimeStudent extends Student
         } while(getForename().isEmpty());
 
         //This do while loop keeps repeating until the surname entered is not left null, and it is not above 50 characters.
-        //Once it has met these criteria, it is stored in the private surname variable using the setter I made in the Student class.
+        //Once it has met these criteria, it is stored in the private surname variable using the setter I made in the StudentClasses.Student class.
 
         String surnameEntryRequest = "Please enter " + getForename() +"'s surname (50 characters max):";
         do
@@ -123,7 +128,7 @@ public class FullTimeStudent extends Student
         setALevelGrades(storeGrades);
 
         //This do while loop keeps repeating until the university name entered is not left null, and it is not above 100 characters.
-        //Once it has met these criteria, it is stored in the private university name variable using the setter I made in the Student class.
+        //Once it has met these criteria, it is stored in the private university name variable using the setter I made in the StudentClasses.Student class.
 
         String universityNameEntryRequest = "Please enter the name of " + getForename() + "'s university (100 characters max):";
         do
@@ -141,7 +146,7 @@ public class FullTimeStudent extends Student
         } while(getUniversityName().isEmpty());
 
         //This do while loop keeps repeating until the degree name entered is not left null, and it is not above 100 characters.
-        //Once it has met these criteria, it is stored in the private degree name variable using the setter I made in the Student class.
+        //Once it has met these criteria, it is stored in the private degree name variable using the setter I made in the StudentClasses.Student class.
 
         String degreeNameEntryRequest = "Please enter the name of " + getForename() + "'s degree (100 characters max):";
         do
@@ -159,7 +164,7 @@ public class FullTimeStudent extends Student
         } while (getDegreeName().isEmpty());
 
         //This do while loop keeps repeating until the student ID entered is not left null, and it is not above 10 characters.
-        //Once it has met these criteria, it is stored in the private student ID variable using the setter I made in the Student class.
+        //Once it has met these criteria, it is stored in the private student ID variable using the setter I made in the StudentClasses.Student class.
 
         String studentIdEntryRequest = "Please enter " + getForename() + "'s student ID (10 characters max):";
         do
@@ -179,7 +184,7 @@ public class FullTimeStudent extends Student
         //This do while loop uses the getIntegerFromUser method to ensure an integer is entered.
         //From there it uses custom exceptions to ensure that the year number entered is not above or below the given range
         //of 1-10. Once these criteria is met, it is stored in the private degree time length variable using the setter I made
-        //in the Student class.
+        //in the StudentClasses.Student class.
         int enteredDegreeTimeLength = 0;
         int minTimeLength = 1;
         int maxTimeLength = 10;
@@ -212,7 +217,7 @@ public class FullTimeStudent extends Student
         //This do while loop uses the getIntegerFromUser method to ensure an integer is entered.
         //From there it uses custom exceptions to ensure that the age entered is not above or below the given range
         //of 18-129 (following Gmail's approach). Once these criteria is met, it is stored in the private degree time
-        // length variable using the setter I made in the Student class.
+        // length variable using the setter I made in the StudentClasses.Student class.
         int enteredAge = 0;
         int minAge = 18;
         int maxAge = 129;

@@ -1,3 +1,9 @@
+package TesterClass;
+
+import StudentFurtherInformationClasses.AgeAfterDegree;
+import StudentFurtherInformationClasses.UcasCalculator;
+import StudentFurtherInformationClasses.YearsTillRetirement;
+
 public class TestDigitalArtefact
 {
     AgeAfterDegree ageAfterDegree = new AgeAfterDegree();
@@ -6,7 +12,7 @@ public class TestDigitalArtefact
     public static void main(String[] args)
     {
         TestDigitalArtefact runTests = new TestDigitalArtefact();
-        System.out.println("The results for the AgeAfterDegree method are as follows:");
+        System.out.println("The results for the StudentFurtherInformationClasses.AgeAfterDegree method are as follows:");
         runTests.testAgeAfterDegreeMethod();
         System.out.println("\nThe results for the PointCalculator method are as follows:");
         runTests.testPointConversion();
@@ -34,7 +40,7 @@ public class TestDigitalArtefact
 
     private void testAgeAfterDegreeMethod()
     {
-        //This method tests the AgeAfterDegree function by inputting some the age and years values
+        //This method tests the StudentFurtherInformationClasses.AgeAfterDegree function by inputting some the age and years values
         //and making sure that it adds together and outputs the expected result. For example 18 + 2 should result in 20.
         testResult(ageAfterDegree.ageAfter(18, 2), 20);
         testResult(ageAfterDegree.ageAfter(18, 4), 22);
