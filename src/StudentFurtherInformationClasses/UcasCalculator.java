@@ -1,17 +1,20 @@
 package StudentFurtherInformationClasses;
 
+//Imports the student class from the student class package.
 import StudentClasses.Student;
 
 public class UcasCalculator
 {
+    //This uses the array made in the student class to get all the results that were entered.
     public void calculateUcasPoints(Student student)
     {
         int totalUcas = 0;
         int gradeNumber = 0;
         String userGrade;
         int turn = student.getUcasCalculatorResults().toArray().length;
-        //This for loop iterates for the same number of subjects they took. For example, it will repeat 3 times if 3
-        //subjects were taken.
+
+        //This for loop iterates for the same number of subjects they took by using the length of the results array.
+        // For example, it will repeat 3 times if 3 subjects were taken.
         for (int i = 0; i < turn; i++)
         {
             userGrade = student.getUcasCalculatorResults().get(gradeNumber);
@@ -23,6 +26,7 @@ public class UcasCalculator
         System.out.println(student.getForename() + " scored " + totalUcas + " Ucas points.\n");
     }
 
+    //This method uses a switch statement to return a score associated with the right grade.
     public int pointConversion (String result)
     {
         switch (result)
@@ -43,6 +47,6 @@ public class UcasCalculator
                 return 0;
             default:
                 return 0;
-        }//End of switch statement.
-    }//End of PointConversion.
+        }
+    }
 }

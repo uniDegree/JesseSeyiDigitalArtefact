@@ -16,12 +16,12 @@ import java.util.Scanner;
 
 public class ProcessManager
 {
-    //This fullTimeStudent object is set here mainly to access the getIntegerFromUser method I made in the createStudent method within this class.
+    //This fullTimeStudent object is set here to access the getIntegerFromUser method I made in the createStudent method within this class.
     FullTimeStudent fullTimeStudent = new FullTimeStudent();
 
     //This student object is used to store whether the user has selected a full-time, part-time or online student.
-    //So it is declared null initially but is set to the appropriate class later on in the code once the user enters the
-    //student they'd like to enter.
+    //So it is declared null initially but it becomes an object associated with the appropriate class later on in
+    // the code once the user enters the student they'd like to enter.
     Student storeObjectType = null;
 
     //This method is in charge of running the entire main menu of the system.
@@ -29,14 +29,17 @@ public class ProcessManager
     {
         Scanner scanner = new Scanner(System.in);
 
-        //This variable stores 'Y' or 'N' which when it equals 'N', the program stops running. When 'Y', the user can
-        //keep using the program.
+        //This variable stores 'Y' or 'N'. When it equals 'N', the program stops running while when it is 'Y',
+        // the user can keep using the program.
         String userProceed = "";
 
         //This loop keeps repeating until the user enters 'N'.
-        while (!userProceed.equals("N"))
+        while(!userProceed.equals("N"))
         {
+            //This message is displayed to the user asking them if they want to enter a new student or view an existing one.
             String beginningPrompt = "Would you like to add a new student (S) or view an existing student's file (V)?";
+
+            //This statement is used to ask the user if they want to continue using the program or not.
             String continuationRequest = "\nWould you like to continue (Y) or exit the program (N)?";
 
             //This choice variable is used to store 'S' for creating a new student file or "V" to read an existing student file.
@@ -49,8 +52,8 @@ public class ProcessManager
                 readOrWriteChoice = scanner.nextLine().toUpperCase();
             } while(!readOrWriteChoice.equals("S") && !readOrWriteChoice.equals("V"));
 
-            //This if statement guides the user to enter student data if they chose to write a new student file ('S').
-            if (readOrWriteChoice.equals("S"))
+            //This if statement guides the user to enter student data into the software if they chose to write a new student file ('S').
+            if(readOrWriteChoice.equals("S"))
             {
                 //This variable stores the number entered between 1-3.
                 int studentType = 0;
@@ -58,20 +61,21 @@ public class ProcessManager
                 //These variables are the range 1-3 that the user must follow to enter what type of student they want to enter.
                 int minStudentType = 1;
                 int maxStudentType = 3;
+
                 //This do-while loop keeps recurring until they enter a number between 1-3. If they enter a different datatype,
                 //then the getIntegerFromUser method forces them to repeat the entry. Or, if they enter a number outside the range
-                //a custom exception is thrown and they're also forced to repeat the entry.
+                //a custom exception is thrown, and they're also forced to repeat the entry.
                 do
                 {
                     try
                     {
                         String studentTypePrompt = "Which type of student are you entering?\n1. Full time student | 2. Part time student | 3. Online student";
                         studentType = fullTimeStudent.getIntegerFromUser(studentTypePrompt, scanner);
-                        if (studentType < minStudentType)
+                        if(studentType < minStudentType)
                         {
                             throw new InvalidNumberException("This is invalid because it is below 1", studentType);
                         }
-                        else if (studentType > maxStudentType)
+                        else if(studentType > maxStudentType)
                         {
                             throw new InvalidNumberException("This is invalid because it is above 3", studentType);
                         }
@@ -80,8 +84,9 @@ public class ProcessManager
                     {
                         System.err.println(e.getMessage());
                     }
-                }while (studentType < minStudentType || studentType > maxStudentType);
+                }while(studentType < minStudentType || studentType > maxStudentType);
 
+                //This switch statement creates a storeObjectType objects and assigns it to the right class.
                 //If 1 is entered, then storeObjectType is a fullTimeStudent object. If 2, then it is a partTimeStudent object
                 //or finally, if it is 3, then it is an onlineStudent object.
                 switch(studentType)
@@ -114,17 +119,19 @@ public class ProcessManager
                 //info on the student or not.
                 String menuProceed = "";
 
+                //This statement asks the user to enter a digit between 1-3 to see extra information on the student.
                 String optionPrompt = "Please enter the option you would like to use below: (1-3)";
 
                 //While the user has not decided to leave this menu.
-                while (!menuProceed.equals("N"))
+                while(!menuProceed.equals("N"))
                 {
                     //These variables store the minimum and maximum value for the options that can be entered.
                     int minOption = 1;
                     int maxOption = 3;
-                    //This do while loop recurs until the user has entered a number within the range of 1-3. If they enter a different datatype,
+
+                    //This do-while loop recurs until the user has entered a number within the range of 1-3. If they enter a different datatype,
                     //then the getIntegerFromUser method forces them to repeat the entry. Or, if they enter a number outside the range
-                    //a custom exception is thrown and they're also forced to repeat the entry.
+                    //a custom exception is thrown, and they're also forced to repeat the entry.
                     do
                     {
                         System.out.println("In this programme you have 3 choices:");
@@ -135,11 +142,11 @@ public class ProcessManager
                         {
                             userOption = fullTimeStudent.getIntegerFromUser(optionPrompt, scanner);
                             scanner.nextLine();
-                            if (userOption > maxOption)
+                            if(userOption > maxOption)
                             {
                                 throw new InvalidNumberException("This is invalid as it is above 3", userOption);
                             }
-                            else if (userOption < minOption)
+                            else if(userOption < minOption)
                             {
                                 throw new InvalidNumberException("This is invalid a is below 1", userOption);
                             }
@@ -148,13 +155,14 @@ public class ProcessManager
                         {
                             System.err.println(e.getMessage());
                         }
-                    } while (userOption < minOption || userOption > maxOption);
+                    } while(userOption < minOption || userOption > maxOption);
 
+                    //This switch statement determines which menu option the user gets to see.
                     //If 1 is entered, the user gets to see how old the student will be when their degree is finished.
                     //If 2 is entered, the user gets to see the student's UCAS score based on their A-level grades.
                     //If 3 is entered, then the user gets to see how old the student till they reach retirement or how
-                    //many years past it they are if they're older than 66.
-                    switch (userOption)
+                    //many years past it, if they're older than 66.
+                    switch(userOption)
                     {
                         case 1:
                             AgeAfterDegree ageAfterDegree = new AgeAfterDegree();
@@ -181,7 +189,7 @@ public class ProcessManager
             }
 
             //This option is present for the user who wants to view student data.
-            if (readOrWriteChoice.equals("V"))
+            if(readOrWriteChoice.equals("V"))
             {
                 //The user has to enter the system generated student ID for the user they wish to look at.
                 String readFileRequest = "Please enter the ID of the student you wish to access data for:";
@@ -193,8 +201,8 @@ public class ProcessManager
 
                 //This do-while loop keeps repeating until the user has entered is not outside the range 0-1,000,000. If they enter a different datatype,
                 //then the getIntegerFromUser method forces them to repeat the entry. Or, if they enter a number outside the range
-                //a custom exception is thrown and they're also forced to repeat the entry. Furthermore if they enter an ID that doesn't exist,
-                //they are also thrown a custom exception which tells them this does not exists and returns them to the starting poing of the system.
+                //a custom exception is thrown, and they're also forced to repeat the entry. Furthermore, if they enter an ID that doesn't exist,
+                //they are also thrown a custom exception which tells them this does not exist and returns them to the starting point of the system.
                 do
                 {
                     try
@@ -218,9 +226,10 @@ public class ProcessManager
                             throw new InvalidNumberException("This is invalid because the student file was not found", studentId);
                         }
 
-                        //Once it gets past the checks the software needs to find out which type of student was entered so that it can read it properly.
-                        //So it uses findOccupation method made in the Student abstract class to find this. If it is found to be a part-time student then
-                        //it will output the result as a part-time student including the daysInAWeek mention. If it is online student, then it is read
+                        //Once it gets past the checks and the student ID is valid, the software needs to find out which
+                        //type of student was entered so that it can read it properly. So it uses findOccupation method
+                        //made in the Student abstract class to find this. If it is found to be a part-time student then
+                        //it will output the result as a part-time student including the daysInAWeek. If it is online student, then it is read
                         //as an online student and displays the onlinePlatform used. Otherwise, it is a generic full-time student, so it reads the usual details.
                         String occupationCheck = foundStudent.findOccupation();
                         if(occupationCheck.equals("Part-time student"))
@@ -229,7 +238,7 @@ public class ProcessManager
                             foundPartTime.printGeneralDetails();
                             foundPartTime.printPartTimeStudentDetail();
                         }
-                        else if (occupationCheck.equals("Online student"))
+                        else if(occupationCheck.equals("Online student"))
                         {
                             Student foundOnline = ReadOnlineStudentFile.AccessStudentData(studentId);
                             foundOnline.printGeneralDetails();
@@ -254,8 +263,8 @@ public class ProcessManager
         System.out.println("\nThank you for using Seyi's Student Record System");
     }
 
-    //This method takes the message request (prompt) and the scanner and keeps repeating until the user has entered 'Y' or 'N' and then it returns this value.
-    //This was made to be a method because I needed to use it multiple times throughout the code and it saved me some code lines.
+    //This method takes the message request (prompt) and the scanner and keeps repeating until the user has entered 'Y' or 'N', and then it returns this value.
+    //This was made to be a method because I needed to use it multiple times throughout the code, and it saved me some code lines.
     public String continuationOrExit(String request, Scanner scanner)
     {
         String proceed;

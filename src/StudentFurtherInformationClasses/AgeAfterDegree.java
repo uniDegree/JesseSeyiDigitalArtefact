@@ -2,6 +2,8 @@ package StudentFurtherInformationClasses;
 
 public class AgeAfterDegree
 {
+    //Using the ageAfter method, it outputs a statement to the user which explains the result to them.
+    //This is not in the test class because it does not return anything.
     public void userAgeAfterDegree(int age, int timeLength, String forename, String degreeName, String universityName)
     {
         int ageAfter = ageAfter(age, timeLength);

@@ -9,7 +9,8 @@ public abstract class Student
     private String _universityName, _degreeName;
     private String _occupation, _universityStudentID, _onlinePlatform;
     private int _daysInAWeek, _systemStudentId, _degreeTimeLength, _userAge;
-    //This private ArrayList isn't used to store data for the file, but it is necessary for the UcasCalculator functionality to work.
+    //This private ArrayList isn't used to store data for the file, but it is necessary for the functionality
+    // in the UcasCalculator class to work.
     private ArrayList <String> _ucasCalculatorResults = new ArrayList<>();
 
     //Encapsulation: getters used to retrieve the student data outside of this abstract class.
@@ -44,7 +45,7 @@ public abstract class Student
     public void setUserAge(int userAge) {this._userAge = userAge;}
     public void setUcasCalculatorResults(ArrayList <String> ucasCalculatorResults) { this._ucasCalculatorResults = ucasCalculatorResults;}
 
-    //This is a normal method that is only used in the FullTimeStudent java class.
+    //This is a normal method that is only overwritten in the FullTimeStudent java class.
     public void createStudent() {}
 
     //This abstract method is mandatory in all the student classes. It is designed to take a studentType integer which it then uses in other
@@ -112,6 +113,7 @@ public abstract class Student
         _userAge = userAge;
         _daysInAWeek = daysInAWeek;
     }
+
     //This method looks for the daysInAWeek entry for the part-time student.
     public void printPartTimeStudentDetail()
     {
@@ -134,6 +136,7 @@ public abstract class Student
         _userAge = userAge;
         _onlinePlatform = onlinePlatform;
     }
+
     //This method looks for the onlinePlatform entry for the online student.
     public void printOnlineStudentDetail()
     {

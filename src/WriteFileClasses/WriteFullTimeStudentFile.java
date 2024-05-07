@@ -1,4 +1,6 @@
 package WriteFileClasses;
+
+//Imports the relevant classes from their associated packages.
 import DirectoryClass.Directories;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -7,6 +9,8 @@ import java.io.IOException;
 
 public class WriteFullTimeStudentFile
 {
+    //Using the directory made, it takes into account the basic student details and writes them to a file that is named after it's
+    //system generated ID using a try catch statement.
     public static void writeFullTimeStudentToFile(int systemStudentId, String forename, String surname, String subjects, String grades, String universityName, String degreeName, String occupation, String universityStudentId, int degreeTimeLength, int userAge)
     {
         String filePath = systemStudentId + ".txt";
