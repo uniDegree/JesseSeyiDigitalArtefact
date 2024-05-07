@@ -4,8 +4,6 @@ import WriteFileClasses.AppendOnlineStudentFile;
 
 public class OnlineStudent extends FullTimeStudent
 {
-
-
     @Override
     public void studentOccupation(int studentType)
     {

@@ -13,7 +13,7 @@ public class PartTimeStudent extends FullTimeStudent
         int minDays = 1;
         int maxDays = 4;
 
-        //This do while loop uses the getIntegerFromUser method to ensure an integer is entered.
+        //This do-while loop uses the getIntegerFromUser method to ensure an integer is entered.
         //From there it uses custom exceptions to ensure that the days in a week number entered is not above or below the given range
         //of 1-4. Once these criteria is met, it is stored in the private days in a week variable using the setter I made
         //in the StudentClasses.Student class.

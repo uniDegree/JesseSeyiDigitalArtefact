@@ -21,7 +21,7 @@ public class YearsTillRetirement
         else
         {
             yearsAfter = timeAfterRetirement(age);
-            System.out.println(student.getForename() + " is already " + yearsAfter + " year(s) past the national retirement age of 66 since they are " + age + ".\n" );
+            System.out.println("At " + student.getUserAge() +  ", " + student.getForename() + " is already " + yearsAfter + " past the national retirement age.");
         }
 
     }

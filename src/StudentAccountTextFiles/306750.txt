@@ -1,0 +1,12 @@
+306750
+Scarleet
+Smith
+[Bio, Chemistry, Physics, Maths]
+[A, A, A, A]
+Cambridge University
+BSc (Honours) Biomedical Sciences.
+Part-time student
+F0068543
+4
+19
+4
