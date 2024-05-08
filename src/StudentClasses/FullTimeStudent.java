@@ -215,7 +215,7 @@ public class FullTimeStudent extends Student
             setDegreeTimeLength(enteredDegreeTimeLength);
             try
             {
-                if(enteredDegreeTimeLength <= minTimeLength)
+                if(enteredDegreeTimeLength < minTimeLength)
                 {
                     throw new InvalidNumberException("This is invalid as the year number entered is less that 1", enteredDegreeTimeLength);
                 }
