@@ -52,6 +52,7 @@ public class PartTimeStudent extends FullTimeStudent
             case 2:
                 setOccupation("Part-time student");
                 System.out.println("Part-time student successfully registered. " + getForename() + " has been assigned student number: " + getSystemStudentId());
+                System.out.println("\n(Press Enter)");
                 break;
         }
 

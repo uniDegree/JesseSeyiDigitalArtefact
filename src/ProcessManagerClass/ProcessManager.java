@@ -71,6 +71,7 @@ public class ProcessManager
                     {
                         String studentTypePrompt = "Which type of student are you entering?\n1. Full time student | 2. Part time student | 3. Online student";
                         studentType = fullTimeStudent.getIntegerFromUser(studentTypePrompt, scanner);
+                        scanner.nextLine();
                         if(studentType < minStudentType)
                         {
                             throw new InvalidNumberException("This is invalid because it is below 1", studentType);
@@ -112,6 +113,11 @@ public class ProcessManager
                 scanner.nextLine();
                 userProceed = continuationOrExit(continuationRequest, scanner);
 
+                if(userProceed.equals("N"))
+                {
+                    break;
+                }
+
                 //This is used to store the menu option of 1-3.
                 int userOption = 0;
 
@@ -141,7 +147,6 @@ public class ProcessManager
                         try
                         {
                             userOption = fullTimeStudent.getIntegerFromUser(optionPrompt, scanner);
-                            scanner.nextLine();
                             if(userOption > maxOption)
                             {
                                 throw new InvalidNumberException("This is invalid as it is above 3", userOption);
@@ -167,19 +172,21 @@ public class ProcessManager
                         case 1:
                             AgeAfterDegree ageAfterDegree = new AgeAfterDegree();
                             ageAfterDegree.userAgeAfterDegree(storeObjectType.getUserAge(), storeObjectType.getDegreeTimeLength(), storeObjectType.getForename(), storeObjectType.getDegreeName(), storeObjectType.getUniversityName());
+                            scanner.nextLine();
                             break;
                         case 2:
                             UcasCalculator ucasCalculator = new UcasCalculator();
                             ucasCalculator.calculateUcasPoints(storeObjectType);
+                            scanner.nextLine();
                             break;
                         case 3:
                             YearsTillRetirement yearsTillRetirement = new YearsTillRetirement();
                             yearsTillRetirement.retirementCountdown(storeObjectType);
+                            scanner.nextLine();
                             break;
                         default:
                             break;
                     }
-
                     //This request asks the user if they're ready to continue using the menu or not.
                     String menuContinuationRequest = "Would you like to see further information on " + storeObjectType.getForename() + " (Y) or would you like to leave this menu (N)?";
                     menuProceed = continuationOrExit(menuContinuationRequest, scanner);

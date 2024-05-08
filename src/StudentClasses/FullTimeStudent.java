@@ -69,7 +69,6 @@ public class FullTimeStudent extends Student
         do
         {
             aLevelAmount = getIntegerFromUser(aLevelNumberRequest, scanner);
-            scanner.nextLine();
             try
             {
                 if(aLevelAmount < minALevelAmount)
@@ -95,6 +94,7 @@ public class FullTimeStudent extends Student
         ArrayList<String> aLevelSubjectNamesList = new ArrayList<String>();
 
         //This for loop keeps repeating until the amount entered achieved has been achieved.
+        scanner.nextLine();
         for (int i = 0; i < aLevelAmount; i++)
         {
             String subjectNameRequest = "Enter the name of subject " + subjectNumber+ ": (50 characters):";
@@ -277,6 +277,7 @@ public class FullTimeStudent extends Student
             case 1:
                 setOccupation("Full-time student");
                 System.out.println("Full-time student successfully registered. " + getForename() + " has been assigned student number: " + getSystemStudentId());
+                System.out.println("\n(Press Enter)");
                 break;
         }
         WriteFullTimeStudentFile.writeFullTimeStudentToFile(getSystemStudentId(), getForename(), getSurname(), getALevelSubjects(), getALevelGrades(), getUniversityName(), getDegreeName(), getOccupation(), getUniversityStudentID(), getDegreeTimeLength(), getUserAge());

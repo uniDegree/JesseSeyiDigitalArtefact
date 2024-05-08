@@ -38,7 +38,7 @@ public class OnlineStudent extends FullTimeStudent
             case 3:
                 setOccupation("Online student");
                 System.out.println("Online student successfully registered. " + getForename() + " has been assigned student number: " + getSystemStudentId());
-
+                System.out.println("\n(Press Enter)");
                 break;
         }
 
